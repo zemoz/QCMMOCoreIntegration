@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.zemoz</groupId>
+    <artifactId>QCMMOCoreIntegration</artifactId>
+    <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.destroystokyo.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.16.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.guillaumevdn</groupId>
+            <artifactId>GCore</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/GCore.jar</systemPath>
+            <version>latest</version>
+        </dependency>
+        <dependency>
+            <groupId>com.guillaumevdn</groupId>
+            <artifactId>QuestCreator</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/QuestCreator.jar</systemPath>
+            <version>latest</version>
+        </dependency>
+        <dependency>
+            <groupId>net.Indyuce</groupId>
+            <artifactId>MMOCore</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/MMOCore-1.4.1.jar</systemPath>
+            <version>latest</version>
+        </dependency>
+        <dependency>
+            <groupId>net.Indyuce</groupId>
+            <artifactId>MMOLib</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/MMOLib-1.2.3.jar</systemPath>
+            <version>latest</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
+        </repository>
+    </repositories>
+</project>
