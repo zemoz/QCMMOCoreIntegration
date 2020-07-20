@@ -1,6 +1,6 @@
 name: QCMMOCoreIntegration
 main: pl.zemoz.qcmmocoreintegration.Main
-version: 1.0.0
+version: ${project.version}
 api-version: 1.16
 author: zemoz
 depend:
