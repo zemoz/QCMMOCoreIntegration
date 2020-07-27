@@ -1,0 +1,5 @@
+# If true plugin checks for update on server start
+check-for-update: true
+
+# Do not change this
+config-version: 1
