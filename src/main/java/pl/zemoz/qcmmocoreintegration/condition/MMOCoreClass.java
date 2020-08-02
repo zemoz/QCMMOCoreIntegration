@@ -18,7 +18,7 @@ public class MMOCoreClass extends Condition {
 
     private final PPEnum<Operation> operation = addComponent(new PPEnum<>("operation", this, "EQUALS", Operation.class, "operation", true, 10, EditorGUI.ICON_ENUM, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_OPERATIONLORE.getLines()));
 
-    private final PPString className = addComponent(new PPString("class", this, "warrior", true, 12, EditorGUI.ICON_STRING, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_SETTINGLORE.getLines()));
+    private final PPString classId = addComponent(new PPString("class", this, "warrior", true, 12, EditorGUI.ICON_STRING, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_SETTINGLORE.getLines()));
 
     public MMOCoreClass(String id, Parseable parent, boolean mandatory, int editorSlot, Mat editorIcon, List<String> editorDescription) {
         super(id, MMOCoreIntegration.MMOCORE_CLASS, parent, mandatory, editorSlot, editorIcon, editorDescription);
@@ -28,21 +28,21 @@ public class MMOCoreClass extends Condition {
         return this.operation.getParsedValue(parser);
     }
 
-    public String getClassName(Player parser) {
-        return this.className.getParsedValue(parser);
+    public String getClassId(Player parser) {
+        return this.classId.getParsedValue(parser);
     }
 
     public boolean isValid(Player player, Player parser, Quest quest) {
         Operation operation = getOperation(parser);
-        String className = getClassName(parser);
+        String classId = getClassId(parser);
 
         PlayerData playerData = PlayerData.get(player);
 
         switch (operation) {
             case EQUALS:
-                return playerData.getProfess().getName().equals(className);
+                return playerData.getProfess().getId().equals(classId);
             case DIFFERENT:
-                return !playerData.getProfess().getName().equals(className);
+                return !playerData.getProfess().getId().equals(classId);
             default:
                 throw new UnsupportedOperationException();
         }

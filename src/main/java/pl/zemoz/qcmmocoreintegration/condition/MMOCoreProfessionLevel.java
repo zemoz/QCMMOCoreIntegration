@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MMOCoreProfessionLevel extends Condition {
 
-    private final PPString profession = addComponent(new PPString("profession", this, "mining", true, 10, EditorGUI.ICON_STRING, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_SETTINGLORE.getLines()));
+    private final PPString professionId = addComponent(new PPString("profession", this, "mining", true, 10, EditorGUI.ICON_STRING, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_SETTINGLORE.getLines()));
 
     private final PPEnum<Operation> operation = addComponent(new PPEnum<>("operation", this, "AT_LEAST", Operation.class, "operation", true, 12, EditorGUI.ICON_ENUM, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_OPERATIONLORE.getLines()));
 
@@ -29,8 +29,8 @@ public class MMOCoreProfessionLevel extends Condition {
         super(id, MMOCoreIntegration.MMOCORE_PROFESSION_LEVEL, parent, mandatory, editorSlot, editorIcon, editorDescription);
     }
 
-    public String getProfessionName(Player parser) {
-        return this.profession.getParsedValue(parser);
+    public String getProfessionId(Player parser) {
+        return this.professionId.getParsedValue(parser);
     }
 
     public Operation getOperation(Player parser) {
@@ -42,12 +42,12 @@ public class MMOCoreProfessionLevel extends Condition {
     }
 
     public boolean isValid(Player player, Player parser, Quest quest) {
-        String professionName = getProfessionName(parser);
+        String professionId = getProfessionId(parser);
         Operation operation = getOperation(parser);
         Integer value = getValue(parser);
 
         PlayerData playerData = PlayerData.get(player);
-        Profession profession = MMOCore.plugin.professionManager.get(professionName);
+        Profession profession = MMOCore.plugin.professionManager.get(professionId);
         int level = playerData.getCollectionSkills().getLevel(profession);
 
         switch (operation) {
@@ -68,6 +68,6 @@ public class MMOCoreProfessionLevel extends Condition {
     }
 
     public enum Operation {
-        EQUALS, DIFFERENT, AT_LEAST, LESS_THAN;
+        EQUALS, DIFFERENT, AT_LEAST, LESS_THAN
     }
 }

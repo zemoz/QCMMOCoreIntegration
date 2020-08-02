@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MMOCoreAttribute extends Condition {
 
-    private final PPString attribute = addComponent(new PPString("attribute", this, "strength", true, 10, EditorGUI.ICON_STRING, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_SETTINGLORE.getLines()));
+    private final PPString attributeId = addComponent(new PPString("attribute", this, "strength", true, 10, EditorGUI.ICON_STRING, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_SETTINGLORE.getLines()));
 
     private final PPEnum<Operation> operation = addComponent(new PPEnum<>("operation", this, "AT_LEAST", Operation.class, "operation", true, 12, EditorGUI.ICON_ENUM, QCLocaleEditor.GUI_QUESTCREATOR_EDITOR_GENERIC_OPERATIONLORE.getLines()));
 
@@ -29,8 +29,8 @@ public class MMOCoreAttribute extends Condition {
         super(id, MMOCoreIntegration.MMOCORE_ATTRIBUTE, parent, mandatory, editorSlot, editorIcon, editorDescription);
     }
 
-    public String getAttribute(Player parser) {
-        return this.attribute.getParsedValue(parser);
+    public String getAttributeId(Player parser) {
+        return this.attributeId.getParsedValue(parser);
     }
 
     public MMOCoreAttribute.Operation getOperation(Player parser) {
@@ -42,12 +42,12 @@ public class MMOCoreAttribute extends Condition {
     }
 
     public boolean isValid(Player player, Player parser, Quest quest) {
-        String attributeName = getAttribute(parser);
+        String attributeId = getAttributeId(parser);
         Operation operation = getOperation(parser);
         Integer value = getValue(parser);
 
         PlayerData playerData = PlayerData.get(player);
-        PlayerAttribute attribute = MMOCore.plugin.attributeManager.get(attributeName);
+        PlayerAttribute attribute = MMOCore.plugin.attributeManager.get(attributeId);
         int attributeValue = playerData.getAttributes().getAttribute(attribute);
 
         switch (operation) {
