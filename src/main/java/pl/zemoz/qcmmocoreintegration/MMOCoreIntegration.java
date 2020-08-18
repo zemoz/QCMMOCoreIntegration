@@ -8,6 +8,7 @@ import pl.zemoz.qcmmocoreintegration.condition.MMOCoreAttribute;
 import pl.zemoz.qcmmocoreintegration.condition.MMOCoreClass;
 import pl.zemoz.qcmmocoreintegration.condition.MMOCoreMainLevel;
 import pl.zemoz.qcmmocoreintegration.condition.MMOCoreProfessionLevel;
+import pl.zemoz.qcmmocoreintegration.object.ServerMMOCoreChangeClass;
 import pl.zemoz.qcmmocoreintegration.object.ServerMMOCoreGiveMainXP;
 import pl.zemoz.qcmmocoreintegration.object.ServerMMOCoreGiveProfessionXP;
 
@@ -20,6 +21,7 @@ public class MMOCoreIntegration extends PluginIntegration {
 
     public static QObjectType SERVER_MMOCORE_GIVE_MAIN_XP = null;
     public static QObjectType SERVER_MMOCORE_GIVE_PROFESSION_XP = null;
+    public static QObjectType SERVER_MMOCORE_CHANGE_CLASS = null;
 
     public MMOCoreIntegration(String pluginName) {
         super(pluginName);
@@ -33,6 +35,7 @@ public class MMOCoreIntegration extends PluginIntegration {
 
         SERVER_MMOCORE_GIVE_MAIN_XP = QObjectType.registerType("SERVER_MMOCORE_GIVE_MAIN_XP", ServerMMOCoreGiveMainXP.class, QObjectType.Category.SERVER, CPLocation.Need.USELESS, "MMOCore");
         SERVER_MMOCORE_GIVE_PROFESSION_XP = QObjectType.registerType("SERVER_MMOCORE_GIVE_PROFESSION_XP", ServerMMOCoreGiveProfessionXP.class, QObjectType.Category.SERVER, CPLocation.Need.USELESS, "MMOCore");
+        SERVER_MMOCORE_CHANGE_CLASS = QObjectType.registerType("SERVER_MMOCORE_CHANGE_CLASS", ServerMMOCoreChangeClass.class, QObjectType.Category.SERVER, CPLocation.Need.USELESS, "MMOCore");
     }
 
     public void disable() {
@@ -43,5 +46,6 @@ public class MMOCoreIntegration extends PluginIntegration {
 
         SERVER_MMOCORE_GIVE_MAIN_XP = SERVER_MMOCORE_GIVE_MAIN_XP.unregister();
         SERVER_MMOCORE_GIVE_PROFESSION_XP = SERVER_MMOCORE_GIVE_PROFESSION_XP.unregister();
+        SERVER_MMOCORE_CHANGE_CLASS = SERVER_MMOCORE_CHANGE_CLASS.unregister();
     }
 }
